@@ -1,48 +1,13 @@
-import { useState, useEffect } from 'react';
-import './styles/main.scss';
-import Header from './components/Header/Header';
-import CategoriesPanel from './components/CategoriesPanel/CategoriesPanel';
-import ContentPizza from './components/ContentPizza/ContentPizza';
-import FilterPanel from './components/FilterPanel/FilterPanel';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
 
 function App() {
-  const [card, setCard] = useState([]);
-  const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [searchActive, setSearchActive] = useState(false);
-
-  useEffect(() => {
-    fetch('https://68f8bdb0deff18f212b74d15.mockapi.io/pizza/image')
-      .then((response) => response.json())
-      .then((data) => {
-        setCard(data);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  const filteredData = card.filter((item) =>
-    item.title.toLowerCase().includes(search.toLowerCase())
-  );
-
   return (
-   <div className={`container ${searchActive ? 'blurred' : ''}`}>
-      <Header
-        items={card}
-        setSearch={setSearch}
-        filteredData={filteredData}
-        setSearchActive={setSearchActive}
-        searchActive={searchActive}
-      />
-      <CategoriesPanel />
-      <div className='main_content'>
-        <FilterPanel />
-        <ContentPizza items={card} loading={loading} />
-      </div>
-
-      {searchActive && <div className="overlay" onClick={() => setSearchActive(false)}></div>}
-
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 
