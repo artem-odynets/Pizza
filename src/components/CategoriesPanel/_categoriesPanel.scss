@@ -1,0 +1,81 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.all_pizzas {
+    @include flex;
+    align-items: flex-end;
+    hr {
+        margin: 40px 0;
+         border: none;
+        height: 1px;
+         background-color: #EDEDED;
+    }
+    h2 {
+        font-size: 36px;
+        font-weight: 800;
+        margin-bottom: 20px;
+    }
+    .content_wrapper {
+        display: flex;
+        flex-direction: column
+    }
+}
+
+.list_categories {
+  @include flex;
+  list-style: none;
+  font-weight: 500;
+  background: #FAFAFA;
+  width: 100%;
+  max-width: 780px;
+  border-radius: 15px;
+  padding: 5px 0;
+  li {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      background: white;
+      color: $orange;
+    }
+  }
+  li:last-child::after {
+    position: relative;
+    right: 0px;
+    content: '';
+    background: url('../../../public/assets/icons/arrow.png') center no-repeat;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.sort_button {
+    button {
+        border: none;
+        border-radius: 15px;
+        background: #FAFAFA;
+        padding: 15px 22px;
+    }
+
+    button::before {
+        content: "";
+        background: url("../../../public/assets/icons/sort.svg") center no-repeat;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+        position: relative;
+        top: 3px;
+    }
+     span {
+        color: $orange;
+        margin-left: 5px;
+     }
+}
+
+

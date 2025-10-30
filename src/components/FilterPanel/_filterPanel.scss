@@ -1,0 +1,136 @@
+@use '../../styles/variables' as *;
+
+.filter {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  min-width: 245px;
+margin-top: 12px;
+  .filter_title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 17px;
+    position: relative;
+
+    input {
+      display: none;
+    }
+
+    .custom_checkbox {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid #e0e0e0;
+      background-color: #f7f7f7;
+      display: inline-block;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    input:checked + .custom_checkbox {
+      background-color: #fe5f00;
+      border-color: #fe5f00;
+    }
+
+    input:checked + .custom_checkbox::after {
+      content: "✓";
+      position: absolute;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      left: 4px;
+      bottom: -1px;
+    }
+  }
+
+  hr {
+    margin: 25px 0;
+    border: none;
+    height: 1px;
+    background: #ededed;
+  }
+
+  .price_filter {
+    h4 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .price_inputs {
+      display: flex;
+      width: 100%;
+      max-width: 150px;
+      gap: 10px;
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1.5px solid #ededed;
+        background: #fff;
+        text-align: center;
+        font-size: 14px;
+
+        &:focus {
+          outline: none;
+          border-color: #fe5f00;
+        }
+      }
+    }
+  }
+
+  a {
+    color: $orange;
+    margin: 21px 0 42px 0;
+  }
+
+  .ingradients {
+    margin-top: 60px;
+    h3 {
+        font-weight: 700;
+        font-size: 16px;
+    }
+  }
+
+   input:checked + .type {
+       border-radius: 50%;
+      border-color: #fe5f00;
+    }
+    .type {
+           width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 6px solid #e0e0e0;
+      background-color: #f7f7f7;
+      display: inline-block;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    h3 {
+        margin: 42px 0 15px 0;
+    }
+
+    .use_filter-button {
+        margin-top: 35px;
+        font-weight: 700;
+        color: white;
+        padding: 15px 55px;
+        background-color: #FE5F00;
+        border: none;
+        border-radius: 18px;
+
+         &:hover {
+            background: #e05403;
+            transition: all 0.3s ease;
+         }
+    }
+}

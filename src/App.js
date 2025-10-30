@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import './styles/main.scss';
+import Header from './components/Header/Header';
+import CategoriesPanel from './components/CategoriesPanel/CategoriesPanel';
+import ContentPizza from './components/ContentPizza/ContentPizza';
+import FilterPanel from './components/FilterPanel/FilterPanel';
 
 function App() {
+  const [card, setCard] = useState([]);
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [searchActive, setSearchActive] = useState(false);
+
+  useEffect(() => {
+    fetch('https://68f8bdb0deff18f212b74d15.mockapi.io/pizza/image')
+      .then((response) => response.json())
+      .then((data) => {
+        setCard(data);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const filteredData = card.filter((item) =>
+    item.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <div className={`container ${searchActive ? 'blurred' : ''}`}>
+      <Header
+        items={card}
+        setSearch={setSearch}
+        filteredData={filteredData}
+        setSearchActive={setSearchActive}
+        searchActive={searchActive}
+      />
+      <CategoriesPanel />
+      <div className='main_content'>
+        <FilterPanel />
+        <ContentPizza items={card} loading={loading} />
+      </div>
+
+      {searchActive && <div className="overlay" onClick={() => setSearchActive(false)}></div>}
+
     </div>
   );
 }

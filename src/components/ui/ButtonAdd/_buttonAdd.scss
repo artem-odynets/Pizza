@@ -1,0 +1,19 @@
+
+.add {
+    color: #FE5F00;
+    background: #FFFAF4;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 15px;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        background: url('../../../../public/assets/icons/add.png') center no-repeat;
+        width: 15px;
+        height: 17px;
+        margin-right: 8px;
+        position: relative;
+        top: 3px;
+    }
+}

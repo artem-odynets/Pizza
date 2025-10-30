@@ -1,0 +1,39 @@
+@use '../../styles/mixins.scss' as *;
+
+.content_pizza {
+@include flex;
+flex-wrap: wrap;
+gap: 30px;
+margin-top: 65px;
+
+}
+
+
+.block_content {
+width: 100%;
+max-width: 285px;
+
+img {
+    background: #FFF7EE;
+  border-radius: 15px;
+  padding: 10px;
+    padding: 30px;
+}
+ h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 15px 0 7px 0;
+ }
+  p {
+    color: #B1B1B1;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+   span {
+    font-weight: 700;
+    font-size: 20px;
+   }
+   .wrapper_price {
+    @include flex;
+   }
+}

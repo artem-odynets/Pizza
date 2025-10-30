@@ -1,0 +1,71 @@
+.searchbar {
+  position: relative;
+  width: 600px;
+
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 15px;
+    border: 2px solid transparent;   
+    background: #f9f9f9;
+    font-size: 16px;
+    color: #333;
+    outline: none;                    
+    transition: all 0.25s ease;        
+  }
+
+  .searchbar-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 8px;
+    z-index: 10;
+    list-style: none;
+    padding: 10px 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: #fafafa;
+      }
+
+      img {
+        width: 25px;
+        height: 25px;
+      }
+
+      .price {
+        margin-left: auto;
+        color: #fe5f00;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.searchbar input:focus,
+.searchbar.active input {
+  border-color: #fe5f00;
+  box-shadow: 0 0 0 3px rgba(234, 99, 21, 0.15);
+}
+
+
+.close_button {
+    background-color: #fe5f00;
+    padding: 0px 4px 0 4px;
+    border-radius: 50%;
+    border: none;
+    position: absolute;
+   right: 15px;
+    bottom: 15px;
+    color: white;
+}
