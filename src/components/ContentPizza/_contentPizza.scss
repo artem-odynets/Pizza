@@ -1,39 +1,64 @@
 @use '../../styles/mixins.scss' as *;
 
 .content_pizza {
-@include flex;
-flex-wrap: wrap;
-gap: 30px;
-margin-top: 65px;
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 30px;
 }
 
+.pizza-item {
+  width: 285px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+.wrapper_desc {
+  padding: 0px 5px 10px 5px;
+}
 
 .block_content {
-width: 100%;
-max-width: 285px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
 
-img {
+  img {
     background: #FFF7EE;
-  border-radius: 15px;
-  padding: 10px;
+    border-radius: 15px;
     padding: 30px;
-}
- h3 {
+    width: 100%;
+    height: auto;
+  }
+
+  h3 {
     font-size: 22px;
     font-weight: 700;
     margin: 15px 0 7px 0;
- }
+  }
+
   p {
     color: #B1B1B1;
     font-size: 14px;
     margin-bottom: 20px;
   }
-   span {
+
+  .wrapper_price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  span {
     font-weight: 700;
     font-size: 20px;
-   }
-   .wrapper_price {
-    @include flex;
-   }
+  }
 }

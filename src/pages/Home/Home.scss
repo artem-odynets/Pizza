@@ -1,0 +1,40 @@
+@use '../../styles/_variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+/* Імпорт лише тих компонентів, що справді рендеряться на Home */
+@import '../../components/Header/_header.scss';
+@import '../../components/CategoriesPanel/_categoriesPanel.scss';
+@import '../../components/FilterPanel/_filterPanel.scss';
+@import '../../components/ui/ButtonCollect/_buttonCollect.scss';
+@import '../../components/ui/ButtonAdd/_buttonAdd.scss';
+@import '../../components/ContentPizza/_skeletonPizza.scss';
+@import '../../components/Search/_search.scss';
+@import '../../components/ContentPizza/_contentPizza.scss';
+
+.home_page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0 30px;
+
+  .main_content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  .filter_panel {
+    flex: 0 0 260px;
+    align-self: flex-start;
+  }
+
+  .content_pizza {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+  }
+}

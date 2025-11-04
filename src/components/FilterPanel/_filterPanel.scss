@@ -3,13 +3,13 @@
 .filter {
   background: #fff;
   border-radius: 15px;
-  padding: 20px;
-  min-width: 245px;
-margin-top: 12px;
+  padding: 0px 20px 20px 20px;
+  max-width: 245px;
   .filter_title {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 15px;
+    margin-top: 0;
   }
 
   .checkbox {

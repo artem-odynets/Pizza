@@ -3,6 +3,7 @@
 
 .header {
     @include flex();
+    margin-top: 40px;
 }
 
 .header_left-block {

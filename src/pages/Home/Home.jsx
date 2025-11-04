@@ -3,7 +3,7 @@ import CategoriesPanel from '../../components/CategoriesPanel/CategoriesPanel';
 import ContentPizza from '../../components/ContentPizza/ContentPizza';
 import FilterPanel from '../../components/FilterPanel/FilterPanel';
 import Header from '../../components/Header/Header';
-import '../../styles/main.scss';
+import "./Home.scss";
 
 function Home() {
   const [card, setCard] = useState([]);
@@ -26,7 +26,7 @@ function Home() {
   );
 
   return (
-    <div className={`container ${searchActive ? 'blurred' : ''}`}>
+    <div className={`container ${searchActive ? 'blurred' : ''} home_page`}>
       <Header
         items={card}
         setSearch={setSearch}
