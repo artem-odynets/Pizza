@@ -12,17 +12,14 @@ function App() {
   const [search, setSearch] = useState("");
   const [searchActive, setSearchActive] = useState(false);
 
-  // отримання піц через React Query
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["pizzas"],
     queryFn: () => getAllPizza().then(res => res.data),
-    staleTime: 5 * 60 * 1000 // 5 хвилин дані свіжі
+    staleTime: 5 * 60 * 1000 
   });
 
-  // дані з сервера (масив піц)
   const pizzas = data || [];
 
-  // фільтр пошуку
   const filteredData = pizzas.filter((item) =>
     item.title.toLowerCase().includes(search.toLowerCase())
   );
@@ -32,7 +29,7 @@ function App() {
       <AppContext.Provider value={{
         search, setSearch,
         searchActive, setSearchActive,
-        card: pizzas, // тепер card = список з сервера
+        card: pizzas, 
         loading: isLoading,
         filteredData
       }}>
