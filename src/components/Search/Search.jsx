@@ -47,7 +47,7 @@ export default function Search() {
     <div ref={searchRef} className="searchbar">
       <input
         type="text"
-        placeholder="Поиск пиццы..."
+        placeholder="Пошук піци..."
         value={query}
         onChange={handleChange}
       />
@@ -70,7 +70,7 @@ export default function Search() {
                  }}>
               <img src={pizza.image} alt={pizza.title} />
               <span>{pizza.title}</span>
-              <span className="price">{pizza.price}₽</span>
+              <span className="price">{pizza.price}грн</span>
               </Link>
             </li>
              

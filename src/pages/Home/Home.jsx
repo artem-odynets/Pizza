@@ -2,19 +2,21 @@ import { useContext } from 'react';
 import { AppContext } from '../../AppContext';
 import CategoriesPanel from '../../components/CategoriesPanel/CategoriesPanel';
 import ContentPizza from '../../components/ContentPizza/ContentPizza';
-import FilterPanel from '../../components/FilterPanel/FilterPanel';
+import FilterPanel from '../../components/FilterPanel/FilterPanel'; // 1. Імпортуй
 import "./Home.scss";
 
 function Home() {
-  const { card, loading, search, filteredData } = useContext(AppContext);
-  const num =6;
- 
+  // 2. Дістань onApplyFilters з контексту
+  const { loading, filteredData, onApplyFilters } = useContext(AppContext);
+  
   return (
     <div className='home_page'>
       <CategoriesPanel />
       <div className='main_content'>
-        <FilterPanel />
-        <ContentPizza items={filteredData} loading={loading} limit={num} />
+        {/* 3. Додай панель фільтрів сюди */}
+        <FilterPanel onApplyFilters={onApplyFilters} />
+        
+        <ContentPizza items={filteredData} loading={loading} />
       </div>
     </div>
   );
