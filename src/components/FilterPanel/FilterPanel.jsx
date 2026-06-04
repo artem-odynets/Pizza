@@ -1,18 +1,14 @@
 import { useState } from "react";
 
 export default function FilterPanel({ onApplyFilters }) {
-  // Стейт для опцій (Можна збирати, Новинки)
   const [canAssemble, setCanAssemble] = useState(true);
   const [isNew, setIsNew] = useState(false);
 
-  // Стейт для цін
   const [priceFrom, setPriceFrom] = useState("");
   const [priceTo, setPriceTo] = useState("");
 
-  // Стейт для інгредієнтів
   const [selectedIngredients, setSelectedIngredients] = useState([]);
 
-  // Стейт для типу тіста
   const [selectedDough, setSelectedDough] = useState([]);
 
   const ingredientsList = [
@@ -31,7 +27,6 @@ export default function FilterPanel({ onApplyFilters }) {
     }
   };
 
-  // Функція застосування фільтрів
   const handleApply = () => {
     onApplyFilters({
       canAssemble,
@@ -43,7 +38,6 @@ export default function FilterPanel({ onApplyFilters }) {
     });
   };
 
-  // 🔥 ФУНКЦІЯ СКИДАННЯ ФІЛЬТРІВ
   const handleReset = () => {
     setCanAssemble(true);
     setIsNew(false);
@@ -52,7 +46,6 @@ export default function FilterPanel({ onApplyFilters }) {
     setSelectedIngredients([]);
     setSelectedDough([]);
     
-    // Передаємо null в App.js, щоб показати всі піци без обмежень
     onApplyFilters(null);
   };
 
@@ -139,7 +132,6 @@ export default function FilterPanel({ onApplyFilters }) {
         </label>
       </div>
 
-      {/* Блок з двома кнопками */}
       <div className="filter_buttons" style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '20px' }}>
         <button className="use_filter-button" onClick={handleApply}>
           Застосувати

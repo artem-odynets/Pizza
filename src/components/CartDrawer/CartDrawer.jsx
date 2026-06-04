@@ -1,22 +1,20 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom"; // Імпортуємо для навігації
+import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../AppContext";
 import "./_cartDrawer.scss";
 
 export default function CartDrawer() {
   const { cart, cartOpen, setCartOpen, updateCount, removeFromCart, totalCartPrice } = useContext(AppContext);
-  const navigate = useNavigate(); // Хук для переходу на сторінку оплати
+  const navigate = useNavigate(); 
 
   if (!cartOpen) return null;
 
-  // Перекладені масиви на українську
   const doughTypes = ['Традиційне', 'Тонке'];
   const sizes = ['Маленька', 'Середня', 'Велика'];
 
-  // Функція переходу до оформлення
   const handleCheckout = () => {
-    setCartOpen(false); // Закриваємо шторку
-    navigate("/checkout"); // Переходимо на сторінку оформлення (яку ми створили)
+    setCartOpen(false); 
+    navigate("/checkout"); 
   };
 
   return (
@@ -46,7 +44,6 @@ export default function CartDrawer() {
                   
                   <div className="item_info">
                     <h3>{item.title}</h3>
-                    {/* Використовуємо українські назви */}
                     <p>{sizes[item.size]}, {doughTypes[item.dough]} тісто</p>
                     
                     {item.selectedIngredients && item.selectedIngredients.length > 0 && (
@@ -83,7 +80,6 @@ export default function CartDrawer() {
                 <div className="dashed_line"></div>
                 <b>{Math.round(totalCartPrice * 0.05)} ₴</b>
               </div>
-              {/* Кнопка тепер веде на сторінку оформлення */}
               <button className="checkout_btn" onClick={handleCheckout}>
                 Оформити замовлення →
               </button>

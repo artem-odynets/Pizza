@@ -59,7 +59,6 @@ function App() {
     });
   };
 
-  // --- ДОДАНО ФУНКЦІЮ ДЛЯ ОНОВЛЕННЯ КІЛЬКОСТІ ---
   const updateCount = (cartItemId, amount) => {
     setCart((prevCart) => prevCart.map((item) => {
       if (item.cartItemId === cartItemId) {
@@ -75,7 +74,7 @@ function App() {
       <AppContext.Provider value={{
         search, setSearch, searchActive, setSearchActive,
         card: data || [], loading: isLoading, filteredData,
-        cart, addToCart, updateCount, // <-- ТЕПЕР ФУНКЦІЯ ПЕРЕДАНА У КОНТЕКСТ
+        cart, addToCart, updateCount, 
         cartOpen, setCartOpen,
         totalCartPrice: cart.reduce((sum, item) => sum + item.price * item.count, 0),
         onApplyFilters: setActiveFilters,

@@ -8,7 +8,6 @@
     gap: 40px;
     align-items: flex-start;
 
-    // Ліва частина (кошик та форми)
     .checkout_section {
       flex: 2;
       background: #f9f9f9;
@@ -42,7 +41,6 @@
       }
     }
 
-    // Права частина (підсумки)
     .checkout_summary {
       flex: 1;
       background: #fff;
@@ -75,16 +73,16 @@
 .header_row {
   display: flex;
   justify-content: space-between;
-  align-items: center; // Вирівнювання по вертикалі
+  align-items: center; 
   margin-bottom: 30px;
 }
 
 .back_button {
-  background-color: #fe5f1e; // Той самий помаранчевий колір
+  background-color: #fe5f1e; 
   color: #fff;
   border: none;
-  padding: 10px 25px;        // Розміри кнопки
-  border-radius: 30px;       // Заокруглення (форма овалу)
+  padding: 10px 25px;       
+  border-radius: 30px;     
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -93,6 +91,6 @@
   transition: background 0.2s ease-in-out;
 
   &:hover {
-    background-color: #d64a0e; // Темніший відтінок при наведенні
+    background-color: #d64a0e; 
   }
 }

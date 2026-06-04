@@ -8,7 +8,6 @@ function Header() {
   const [account, setAccount] = useState(false);
   const closeRef = useRef(null);
   
-  // Рахуємо загальну кількість штук піц у кошику
   const totalCount = cart.reduce((sum, item) => sum + item.count, 0);
 
   const handleClickAccount = (e) => {
@@ -52,7 +51,6 @@ function Header() {
             
             <div className="cart_delimiter"></div>
 
-            {/* Замінив ₽ на ₴ */}
             <span>{totalCartPrice} ₴</span>
           </button>
 

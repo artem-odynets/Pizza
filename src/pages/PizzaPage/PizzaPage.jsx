@@ -6,7 +6,6 @@ import ContentPizza from "../../components/ContentPizza/ContentPizza";
 import "../PizzaPage/PizzaPage.scss";
 import { AppContext } from "../../AppContext";
 
-// Масив інгредієнтів з цінами в грн
 const INGREDIENTS_DATA = [
   { id: 'border', name: 'Сирний бортик', price: 45, image: '/assets/images/image10.png' },
   { id: 'mozzarella', name: 'Вершкова моцарела', price: 35, image: '/assets/images/image11.png' },
@@ -19,16 +18,13 @@ export default function PizzaPage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Повністю українські назви конфігурацій
   const doughTypes = ['Традиційне', 'Тонке'];
   const sizes = ['Маленька', 'Середня', 'Велика'];
 
-  // Стейти для вибору розміру, тіста та додатків
   const [size, setSize] = useState(0);
   const [dough, setDough] = useState(0);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   
-  // Стейт для візуального ефекту кнопки "Додано"
   const [isAdded, setIsAdded] = useState(false);
 
   useEffect(() => {
@@ -53,23 +49,17 @@ export default function PizzaPage() {
     );
   }
 
-  // --- ЛОГІКА ДИНАМІЧНОГО РОЗРАХУНКУ ЦІНИ ---
-  // 1. Базова ціна піци (переведена з рублів у гривні)
   const basePriceInUah = Math.round(pizza.price * 0.4);
 
-  // 2. Зміна ціни залежно від розміру
   let sizeModifier = 0;
-  if (size === 1) sizeModifier = 40;  // Середня піца +40 грн
-  if (size === 2) sizeModifier = 80;  // Велика піца +80 грн
+  if (size === 1) sizeModifier = 40;  
+  if (size === 2) sizeModifier = 80;  
 
-  // 3. Зміна ціни залежно від типу тіста
   let doughModifier = 0;
-  if (dough === 0) doughModifier = 15; // Традиційне пишне тісто дорожче на +15 грн
+  if (dough === 0) doughModifier = 15; 
 
-  // 4. Сума вибраних інгредієнтів
   const ingredientsPrice = selectedIngredients.reduce((sum, ing) => sum + ing.price, 0);
 
-  // 🔥 Загальна підсумкова вартість, яка реагує на кожен клік
   const totalPizzaPrice = basePriceInUah + sizeModifier + doughModifier + ingredientsPrice;
 
   const handleToggleIngredient = (ingredient) => {
@@ -81,13 +71,10 @@ export default function PizzaPage() {
   };
 
   const handleAddToCartClick = () => {
-    // Відправляємо в глобальний кошик повну конфігурацію
     addToCart(pizza, size, dough, selectedIngredients, totalPizzaPrice);
     
-    // Вмикаємо тригер успішного додавання
     setIsAdded(true);
     
-    // Через 1.5 секунди повертаємо кнопці початковий стан
     setTimeout(() => {
       setIsAdded(false);
     }, 1500);
@@ -110,7 +97,6 @@ export default function PizzaPage() {
         <div className="pizza_wrapper">
           <h2>{pizza?.title}</h2>
 
-          {/* Вибір розміру піци */}
           <div className="buttons_wrapper">
             {sizes.map((item, index) => (
               <button 
@@ -123,7 +109,6 @@ export default function PizzaPage() {
             ))} 
           </div>
 
-          {/* Вибір типу тіста */}
           <div className="buttons_wrapper">
             {doughTypes.map((item, index) => (
               <button 
@@ -136,7 +121,6 @@ export default function PizzaPage() {
             ))}
           </div>
 
-          {/* Список інгредієнтів */}
           <div className="ingradients_list"> 
             <h2>Додати в піцу</h2> 
             <div className="supplements"> 
@@ -158,7 +142,6 @@ export default function PizzaPage() {
             </div> 
           </div>
 
-          {/* Кнопка з динамічною ціною, інтерактивним стейтом та відступом 32px */}
           <button 
             className={`add_pizza_cart ${isAdded ? 'success_added' : ''}`}
             style={{ 

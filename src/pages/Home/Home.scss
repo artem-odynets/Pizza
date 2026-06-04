@@ -1,7 +1,6 @@
 @use '../../styles/_variables.scss' as *;
 @use '../../styles/mixins.scss' as *;
 
-/* Імпорт лише тих компонентів, що справді рендеряться на Home */
 @import '../../components/Header/_header.scss';
 @import '../../components/CategoriesPanel/_categoriesPanel.scss';
 @import '../../components/FilterPanel/_filterPanel.scss';

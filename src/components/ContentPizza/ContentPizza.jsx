@@ -5,7 +5,6 @@ import SkeletonPizza from "./SkeletonPizza";
 import { useNavigate } from "react-router-dom";
 
 export default function ContentPizza({ items, loading, limit }) {
-  // Дістаємо все необхідне з глобального контексту
   const { addToCart, cart, updateCount } = useContext(AppContext); 
   const navigate = useNavigate();
   
@@ -16,11 +15,9 @@ export default function ContentPizza({ items, loading, limit }) {
       {loading
         ? [...new Array(limit || 30)].map((_, i) => <SkeletonPizza key={i} />)
         : displayedItems.map((item) => {
-            // Формуємо дефолтний ID для кошика: id - маленька (0) - традиційне тісто (0) - без додатків ([])
             const defaultCartItemId = `${item.id}-0-0-[]`;
             const cartItem = cart.find(cartObj => cartObj.cartItemId === defaultCartItemId);
             
-            // Переводимо базову ціну картки в гривні
             const priceInUah = Math.round(item.price * 0.4);
 
             return (
@@ -37,14 +34,12 @@ export default function ContentPizza({ items, loading, limit }) {
                     <p>{item.text}</p>
                      
                     <div className="wrapper_price">
-                      {/* Повністю український текст та валюта */}
                       <span>від {priceInUah} ₴</span>
                       
                       {cartItem ? (
-                        /* ЯКЩО ПІЦА ВЖЕ Є В КОШИКУ: показуємо селектор кількості [- 1 +] */
                         <div 
                           className="pizza_count_selector" 
-                          onClick={(e) => e.stopPropagation()} // Зупиняємо перехід на сторінку піци
+                          onClick={(e) => e.stopPropagation()} 
                         >
                           <button 
                             className="minus_btn" 
@@ -63,10 +58,8 @@ export default function ContentPizza({ items, loading, limit }) {
                           </button>
                         </div>
                       ) : (
-                        /* ЯКЩО ПІЦИ НЕМАЄ: показуємо стандартну кнопку "+ Додати" */
                         <ButtonAdd onClick={(e) => {
                           e.stopPropagation();
-                          // Передаємо дефолтні параметри (0, 0), порожні додатки [] та ціну в грн
                           addToCart(item, 0, 0, [], priceInUah);
                         }} />
                       )}

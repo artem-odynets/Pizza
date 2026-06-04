@@ -16,7 +16,6 @@ export default function CheckoutPage() {
 
   return (
     <div className="container checkout_page">
-      {/* Об'єднуємо кнопку та заголовок у header_row */}
       <div className="header_row">
        
         <h1>Оформлення замовлення</h1>
