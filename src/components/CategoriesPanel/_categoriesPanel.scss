@@ -1,0 +1,77 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.all_pizzas {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+
+    h2 {
+        font-size: 33px;
+        font-weight: 800;
+        margin-bottom: 20px;
+    }
+    hr {
+      margin-bottom: 40px;
+    }
+
+    .wrapper_top {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+.list_categories {
+    display: flex; 
+    list-style: none;
+    background: #FAFAFA;
+    border-radius: 15px;
+    padding: 5px;
+    gap: 5px; 
+
+    li {
+        cursor: pointer;
+        font-weight: 700;
+        padding: 10px 20px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        white-space: nowrap; 
+
+        &.active {
+            background: white;
+            color: $orange;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        &:hover:not(.active) {
+            background: #f0f0f0;
+        }
+    }
+}
+
+.sort_button {
+    button {
+        border: none;
+        border-radius: 15px;
+        background: #FAFAFA;
+        padding: 15px 22px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+
+        &::before {
+            content: "";
+            background: url("../../../public/assets/icons/sort.svg") center no-repeat;
+            width: 15px;
+            height: 15px;
+            margin-right: 8px;
+        }
+        
+        span {
+            color: $orange;
+        }
+    }
+}

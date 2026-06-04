@@ -1,0 +1,208 @@
+.cart_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart_drawer {
+  width: 420px;
+  height: 100%;
+  background: #ffffff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -5px 0px 20px rgba(0, 0, 0, 0.05);
+  animation: slideIn 0.3s ease-out;
+
+  @keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+
+  .cart_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .close_btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #b2b2b2;
+      cursor: pointer;
+      &:hover { color: #000; }
+    }
+  }
+}
+
+.empty_cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+
+  img {
+    width: 120px;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #848484;
+    font-size: 16px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+  }
+
+  .back_btn {
+    background: #fe5f1e;
+    color: #fff;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease-in-out;
+
+    &:hover { background: #dd4f14; }
+  }
+}
+
+// Список товарів
+.cart_items_list {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 5px;
+}
+
+.cart_item {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #f3f3f3;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  position: relative;
+
+  .item_img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    margin-right: 15px;
+  }
+
+  .item_info {
+    flex: 1;
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    p {
+      color: #b2b2b2;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .item_bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .count_selector {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    button {
+      width: 25px;
+      height: 25px;
+      border: 1px solid #fe5f1e;
+      background: #fff;
+      color: #fe5f1e;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background: #fe5f1e;
+        color: #fff;
+      }
+    }
+  }
+
+  .item_price {
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .delete_item_btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #d3d3d3;
+    cursor: pointer;
+    &:hover { color: #ff4d4d; }
+  }
+}
+
+.cart_footer {
+  .total_row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 15px;
+    font-size: 16px;
+
+    .dashed_line {
+      flex: 1;
+      border-bottom: 1px dashed #dfdfdf;
+      margin: 0 10px;
+      position: relative;
+      top: -4px;
+    }
+  }
+
+  .checkout_btn {
+    width: 100%;
+    background: #fe5f1e;
+    color: #fff;
+    border: none;
+    padding: 18px;
+    border-radius: 18px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.15s ease-in-out;
+
+    &:hover { background: #dd4f14; }
+  }
+}
