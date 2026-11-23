@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PizzaApi.Models;
 
 #nullable disable
@@ -14,40 +15,46 @@ namespace PizzaApi.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.11");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.11")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("PizzaApi.Models.Pizza", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CategoryId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<int>("DoughType")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Image")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsSpicy")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("boolean");
 
                     b.Property<bool>("IsVegetarian")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("boolean");
 
                     b.Property<int>("Price")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -57,9 +64,9 @@ namespace PizzaApi.Migrations
                         new
                         {
                             Id = 1,
-                            CategoryId = 0,
+                            CategoryId = 5,
                             DoughType = 0,
-                            Image = "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500&auto=format&fit=crop",
+                            Image = "/assets/images/img1.png",
                             IsSpicy = false,
                             IsVegetarian = false,
                             Price = 395,
@@ -69,10 +76,10 @@ namespace PizzaApi.Migrations
                         new
                         {
                             Id = 2,
-                            CategoryId = 0,
+                            CategoryId = 2,
                             DoughType = 0,
-                            Image = "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=500&auto=format&fit=crop",
-                            IsSpicy = false,
+                            Image = "/assets/images/img2.png",
+                            IsSpicy = true,
                             IsVegetarian = false,
                             Price = 449,
                             Text = "Гостра ковбаса чоризо, гострий перець халапеньо, соус барбекю, мітболи, томати, солодкий перець, червона цибуля, моцарела",
@@ -81,9 +88,9 @@ namespace PizzaApi.Migrations
                         new
                         {
                             Id = 3,
-                            CategoryId = 0,
-                            DoughType = 0,
-                            Image = "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=500&auto=format&fit=crop",
+                            CategoryId = 1,
+                            DoughType = 1,
+                            Image = "/assets/images/img3.png",
                             IsSpicy = false,
                             IsVegetarian = false,
                             Price = 399,
@@ -93,11 +100,11 @@ namespace PizzaApi.Migrations
                         new
                         {
                             Id = 4,
-                            CategoryId = 0,
-                            DoughType = 0,
-                            Image = "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?q=80&w=500&auto=format&fit=crop",
+                            CategoryId = 4,
+                            DoughType = 1,
+                            Image = "/assets/images/img4.png",
                             IsSpicy = false,
-                            IsVegetarian = false,
+                            IsVegetarian = true,
                             Price = 250,
                             Text = "Класична піца з великою кількістю моцарели, фірмовим томатним соусом та італійськими травами",
                             Title = "Маргарита"
@@ -105,9 +112,9 @@ namespace PizzaApi.Migrations
                         new
                         {
                             Id = 5,
-                            CategoryId = 0,
+                            CategoryId = 1,
                             DoughType = 0,
-                            Image = "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?q=80&w=500&auto=format&fit=crop",
+                            Image = "/assets/images/img5.png",
                             IsSpicy = false,
                             IsVegetarian = false,
                             Price = 350,
@@ -117,11 +124,11 @@ namespace PizzaApi.Migrations
                         new
                         {
                             Id = 6,
-                            CategoryId = 0,
+                            CategoryId = 4,
                             DoughType = 0,
-                            Image = "https://images.unsplash.com/photo-1571066811602-71683a3f680d?q=80&w=500&auto=format&fit=crop",
+                            Image = "/assets/images/img6.png",
                             IsSpicy = false,
-                            IsVegetarian = false,
+                            IsVegetarian = true,
                             Price = 290,
                             Text = "Солодкий перець, томати, червона цибуля, маслини, свіжі печериці та сир моцарела",
                             Title = "Вегетаріанська"
